@@ -1,0 +1,77 @@
+/* src/styles/Reports.css */
+.reports-page {
+  background-color: #0F172A;
+  color: #F8FAFC;
+  font-family: 'Inter', sans-serif;
+  padding: 60px 80px;  /* More padding around page */
+  min-height: 100vh;
+}
+
+.reports-title {
+  font-size: 36px;      /* Slightly bigger */
+  font-weight: bold;
+  margin-bottom: 48px;  /* More space below title */
+}
+
+.reports-table {
+  background-color: #1E293B;
+  border-radius: 16px;
+  padding: 32px 40px;   /* More padding inside the table container */
+  overflow-x: auto;     /* To handle small screens */
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 60px 140px 140px 120px 200px 140px; /* Wider columns */
+  padding: 18px 0;     /* More vertical padding for rows */
+  border-bottom: 1.5px solid #334155;
+}
+
+.table-header {
+  font-weight: bold;
+  color: #38BDF8;
+  border-bottom: 3px solid #38BDF8;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.severity {
+  padding: 8px 16px;  /* More padding for badges */
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.low {
+  background-color: #15803D;
+  color: #D1FAE5;
+}
+
+.medium {
+  background-color: #FBBF24;
+  color: #1F2937;
+}
+
+.high {
+  background-color: #DC2626;
+  color: #F8FAFC;
+}
+
+.download-btn {
+  background-color: #22C55E;
+  color: white;
+  padding: 10px 18px;   /* Bigger clickable button */
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #16A34A;
+}

@@ -1,0 +1,37 @@
+# === Root-Level ===
+.env
+*.env
+*.log
+.DS_Store
+*.pyc
+__pycache__/
+*.pkl
+*.pt
+
+# === Backend ===
+backend/__pycache__/
+backend/.venv/
+backend/checkpoint-198/
+backend/*.db
+backend/*.sqlite
+backend/.pytest_cache/
+backend/instance/
+backend/.mypy_cache/
+
+# === Frontend ===
+frontend/node_modules/
+frontend/.next/
+frontend/.vercel/
+frontend/build/
+frontend/dist/
+
+# === Optional frontend lock files (ignore if using one tool only) ===
+frontend/yarn.lock
+frontend/package-lock.json
+
+
+node_modules/
+.DS_Store
+dist/
+build/
+.env
