@@ -23,8 +23,9 @@
 .table-header,
 .table-row {
   display: grid;
-  grid-template-columns: 60px 140px 140px 120px 200px 140px; /* Wider columns */
-  padding: 18px 0;     /* More vertical padding for rows */
+  grid-template-columns: 0.4fr 1fr 1fr 1fr 1.6fr 1fr;
+  align-items: center;
+  padding: 18px 0;
   border-bottom: 1.5px solid #334155;
 }
 

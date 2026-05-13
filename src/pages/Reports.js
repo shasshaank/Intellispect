@@ -4,6 +4,25 @@ import '../styles/Reports.css';
 const Reports = () => {
   const [reports, setReports] = useState([]);
 
+  const handleDownload = (report) => {
+    const reportText = `IntelliInspect Anomaly Report\n\n` +
+      `ID: ${report._id || 'N/A'}\n` +
+      `Type: ${report.type}\n` +
+      `Confidence: ${(parseFloat(report.confidence) * 100).toFixed(1)}%\n` +
+      `Severity: ${report.severity}\n` +
+      `Timestamp: ${new Date(report.timestamp).toLocaleString()}\n` +
+      `Filename: ${report.filename || 'N/A'}\n`;
+    const blob = new Blob([reportText], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `IntelliInspect_Report_${report.filename ? report.filename.split('.')[0] : 'Anomaly'}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   useEffect(() => {
     const fetchReports = async () => {
       const email = localStorage.getItem('userEmail'); // Move it here
@@ -58,7 +77,7 @@ const Reports = () => {
             <span className={`severity ${r.severity.toLowerCase()}`}>{r.severity}</span>
             <span>{new Date(r.timestamp).toLocaleString()}</span>
             <span>
-              <button className="download-btn">Download</button>
+              <button className="download-btn" onClick={() => handleDownload(r)}>Download</button>
             </span>
           </div>
         ))}
