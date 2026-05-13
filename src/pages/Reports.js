@@ -33,7 +33,7 @@ const Reports = () => {
       }
 
       try {
-        const response = await fetch('https://shashaank0707-intellispect.hf.space', {
+        const response = await fetch('https://shashaank0707-intellispect.hf.space/get-reports', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

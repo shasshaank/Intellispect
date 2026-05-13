@@ -21,7 +21,7 @@ const Login = ({ setIsLoggedIn }) => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/login', {  // be consistent with localhost
+      const response = await fetch('https://shashaank0707-intellispect.hf.space/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -42,7 +42,7 @@ const Dashboard = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/predict', {
+      const response = await fetch('https://shashaank0707-intellispect.hf.space/predict', {
         method: 'POST',
         body: formData,
       });
