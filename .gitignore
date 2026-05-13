@@ -17,7 +17,7 @@ backend/*.sqlite
 backend/.pytest_cache/
 backend/instance/
 backend/.mypy_cache/
-backend/.env/
+backend/.env
 
 # === Frontend ===
 frontend/node_modules/
