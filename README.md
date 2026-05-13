@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# 🔩 IntelliInspect — AI-Powered Screw Defect Detection
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+IntelliInspect is a full-stack industrial quality control application that uses deep learning to detect defects in screw images. Upload an image, get an instant classification, and visualize exactly where the model is looking via a Grad-CAM heatmap overlay.
 
-## Available Scripts
+![IntelliInspect Dashboard](https://img.shields.io/badge/Status-Live-brightgreen) ![Model](https://img.shields.io/badge/Model-ResNet50-blue) ![Framework](https://img.shields.io/badge/Backend-Flask-lightgrey) ![Frontend](https://img.shields.io/badge/Frontend-React-61DAFB)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **AI Defect Detection** — ResNet50 fine-tuned on real screw defect images
+- **Grad-CAM Heatmaps** — SmoothGradCAM++ overlays highlight exactly which pixels triggered the prediction
+- **Anomaly Reports** — Every prediction is logged to MongoDB with timestamp, confidence, and severity
+- **Downloadable Reports** — Export any report as a `.txt` file directly from the dashboard
+- **User Authentication** — Secure login/signup with bcrypt-hashed passwords
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🏗️ Architecture
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+Intellispect/
+├── backend/          # Flask API + ResNet50 model
+│   ├── app.py        # Main Flask application
+│   ├── Dockerfile    # For HuggingFace Spaces deployment
+│   └── requirements.txt
+└── src/              # React frontend
+    ├── pages/
+    │   ├── Dashboard.js   # Image upload + prediction UI
+    │   ├── Reports.js     # Anomaly report table
+    │   ├── Login.js
+    │   └── Signup.js
+    └── styles/
+```
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🤖 Model
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Property | Detail |
+|----------|--------|
+| Architecture | ResNet50 |
+| Classes | `Good`, `Defective` |
+| Input Size | 224 × 224 |
+| Normalization | ImageNet mean/std |
+| Explainability | SmoothGradCAM++ (torchcam) |
+| Training | Real images + heavy augmentation (flips, rotations, colour jitter) |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🚀 Running Locally
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Backend
+```bash
+cd backend
+pip install -r requirements.txt
+# Create a .env file with your MONGO_URI
+python app.py
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Frontend
+```bash
+npm install
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🌐 Deployment
 
-## Learn More
+| Component | Platform |
+|-----------|----------|
+| Backend (Flask API) | HuggingFace Spaces (Docker) |
+| Frontend (React) | Vercel |
+| Database | MongoDB Atlas |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🛠️ Tech Stack
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Frontend**: React, React Router, Vanilla CSS  
+**Backend**: Python, Flask, Flask-CORS  
+**ML**: PyTorch, torchvision (ResNet50), torchcam  
+**Database**: MongoDB Atlas via pymongo  
+**Auth**: bcrypt  
+**Deployment**: HuggingFace Spaces, Vercel  
